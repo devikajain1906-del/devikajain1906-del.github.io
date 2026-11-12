@@ -1,0 +1,317 @@
+<title>Devika Jain</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one left-aligned column. Huge expanded name, a short first-person intro, a project index,
+     one deep write-up (Job Application Tracker) with a sketch-style diagram, plain lists for stack, plain prose for the story. */
+  :root {
+    --bg: #F6F7F3;
+    --surface: #FFFFFF;
+    --ink: #141A16;
+    --muted: #59635C;
+    --line: #D6DBD2;
+    --accent: #17603F;
+    --hi: #FFE66D;
+    --on-accent: #FFFFFF;
+    --f-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
+    --f-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1210; --surface: #151B18; --ink: #ECEFE9; --muted: #98A39B; --line: #28322C;
+      --accent: #7ED6A0; --hi: #5A4F12; --on-accent: #0E1210;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1210; --surface: #151B18; --ink: #ECEFE9; --muted: #98A39B; --line: #28322C;
+    --accent: #7ED6A0; --hi: #5A4F12; --on-accent: #0E1210;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 30; }
+  a { color: var(--ink); text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  mark { background: linear-gradient(transparent 58%, var(--hi) 58%); color: inherit; padding: 0 0.08em; }
+
+  .wrap {
+    max-width: 1000px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .mono { font-family: var(--f-mono); }
+  .label { font: 500 12.5px var(--f-mono); letter-spacing: 0.04em; color: var(--muted); margin: 0 0 14px; text-transform: lowercase; }
+
+  /* top bar */
+  .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); }
+  .bar .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 14px; }
+  .bar a { text-decoration: none; font-size: 15px; font-weight: 500; }
+  .bar .nav { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
+  .bar .nav a { color: var(--muted); }
+  .bar .nav a:hover { color: var(--accent); }
+  section[id] { scroll-margin-top: 56px; }
+
+  /* hero */
+  .hero { padding-block: clamp(36px, 8vw, 88px) clamp(40px, 7vw, 72px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 40px 56px; align-items: end; }
+  h1 {
+    font-family: var(--f-display); font-stretch: 125%; font-weight: 900; letter-spacing: -0.045em; line-height: 0.88;
+    font-size: clamp(3.4rem, 15vw, 9.5rem); margin: 0 0 30px;
+  }
+  h1 span { color: var(--accent); }
+  .intro { font-size: clamp(1.1rem, 2.4vw, 1.35rem); line-height: 1.55; max-width: 31em; margin: 0 0 24px; text-wrap: pretty; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-weight: 600; margin: 0; }
+  .now { border-left: 3px solid var(--accent); padding-left: 18px; font-size: 15.5px; }
+  .now p { margin: 0 0 14px; }
+  .now p:last-child { margin: 0; }
+  .now b { display: block; font: 500 12px var(--f-mono); color: var(--muted); letter-spacing: 0.04em; margin-bottom: 2px; text-transform: lowercase; }
+
+  /* sections */
+  .block { padding-block: clamp(44px, 7vw, 80px) 0; }
+  h2 { font-family: var(--f-display); font-stretch: 112%; font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-size: clamp(2rem, 5.5vw, 3.2rem); margin: 0 0 34px; }
+  h3 { font-family: var(--f-display); font-stretch: 100%; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin: 0; }
+
+  /* featured project */
+  .feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 40px; align-items: start; }
+  .feature h3 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 16px; }
+  .feature p { margin: 0 0 16px; max-width: 34em; }
+  .feature .stack { font: 400 13.5px/1.6 var(--f-mono); color: var(--muted); margin-bottom: 18px; }
+  .feature ul { margin: 0 0 22px; padding-left: 1.1em; max-width: 34em; }
+  .feature li { margin-bottom: 8px; }
+  .feature li::marker { color: var(--accent); }
+  .arch { width: 100%; height: auto; max-width: 380px; display: block; margin-inline: auto; }
+  .arch .n { fill: var(--surface); stroke: var(--ink); stroke-width: 1.3; }
+  .arch .hot { stroke: var(--accent); stroke-width: 2; }
+  .arch .box { fill: none; stroke: var(--line); stroke-width: 1.3; }
+  .arch .t { fill: var(--ink); font: 700 15px var(--f-body); }
+  .arch .m { fill: var(--ink); font: 400 12px var(--f-mono); }
+  .arch .s { fill: var(--muted); font: 400 11.5px var(--f-mono); }
+  .arch .ln { stroke: var(--ink); stroke-width: 1.4; fill: none; }
+  .arch .ah { fill: var(--ink); }
+  .arch .cap { fill: var(--accent); font: 500 11.5px var(--f-mono); }
+
+  .routes { margin-top: 44px; }
+  .tablewrap { overflow-x: auto; }
+  table { width: 100%; min-width: 580px; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font: 500 12px var(--f-mono); color: var(--muted); padding: 0 16px 10px 0; text-transform: lowercase; }
+  td { padding: 10px 16px 10px 0; border-top: 1px solid var(--line); vertical-align: baseline; }
+  td.m, td.r { font: 500 13.5px var(--f-mono); white-space: nowrap; }
+  td.m { color: var(--accent); }
+  td.a { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+  /* project index */
+  .index { margin-top: 64px; }
+  .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 0.9fr); gap: 8px 32px; padding-block: 24px; border-top: 1px solid var(--line); }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row h3 { font-size: 1.35rem; }
+  .row p { margin: 0; color: var(--muted); font-size: 16px; }
+  .row .stack { font: 400 13px/1.6 var(--f-mono); color: var(--muted); }
+  .row.upnext h3::after { content: "up next"; font: 500 11.5px var(--f-mono); color: var(--accent); margin-left: 10px; letter-spacing: 0.02em; vertical-align: middle; }
+
+  /* story */
+  .story p { max-width: 36em; margin: 0 0 20px; }
+  .story { max-width: 640px; }
+
+  /* stack list */
+  dl.skills { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 14px 40px; max-width: 760px; }
+  dl.skills dt { font: 500 13px var(--f-mono); color: var(--muted); padding-top: 3px; text-transform: lowercase; }
+  dl.skills dd { margin: 0; font-size: 17px; }
+
+  /* contact */
+  .contact { padding-block: clamp(56px, 9vw, 110px) 40px; }
+  .contact h2 { margin-bottom: 20px; max-width: 12em; }
+  .contact p { max-width: 30em; margin: 0 0 24px; }
+  .big-links { display: grid; gap: 6px; font: 500 clamp(1.1rem, 3.4vw, 1.6rem)/1.3 var(--f-display); font-stretch: 105%; letter-spacing: -0.02em; }
+  .big-links a { overflow-wrap: anywhere; }
+  footer { padding-block: 22px 32px; border-top: 1px solid var(--line); font: 12.5px var(--f-mono); color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+    .feature { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  }
+  @media (max-width: 560px) {
+    dl.skills { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    dl.skills dd { margin-bottom: 14px; }
+    .bar .nav { gap: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#top"><b>Devika Jain</b></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#story">Story</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <div>
+      <h1>Devika<br>Jain<span>.</span></h1>
+      <p class="intro">I'm a second-year BSc AI &amp; ML student at CGC Landran, teaching myself <mark>backend development</mark> by building things: REST APIs, login systems and small databases. I'm looking for an off-campus internship before the end of 2026.</p>
+      <p class="links">
+        <a href="https://github.com/devikajain1906-del" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/devika-jain-728258402" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#projects">See my projects</a>
+      </p>
+    </div>
+    <aside class="now" aria-label="Right now">
+      <p><b>looking for</b>A backend internship, off campus</p>
+      <p><b>next build</b>A real-time chat app</p>
+      <p><b>works in</b>Python, Flask, SQLite</p>
+    </aside>
+  </section>
+
+  <section class="wrap block" id="projects">
+    <p class="label">projects</p>
+    <h2>Things I've built</h2>
+
+    <article class="feature">
+      <div>
+        <h3>Job Application Tracker</h3>
+        <p>A web app where each person keeps track of the jobs they have applied for. You sign up, log in, and add, edit or delete your applications from a Streamlit dashboard. The Flask API behind it checks a JWT on every protected request, so people only see their own data.</p>
+        <p class="stack">Python · Flask · SQLite · JWT · bcrypt · Streamlit</p>
+        <ul>
+          <li>Passwords are stored as bcrypt hashes.</li>
+          <li>A <span class="mono" style="font-size:14px">token_required</span> decorator guards every route except signup and login.</li>
+          <li>All four operations (create, read, update, delete) work and are tested end to end.</li>
+          <li>The code is public on GitHub with a README.</li>
+        </ul>
+        <a href="https://github.com/devikajain1906-del/job-application-tracker" target="_blank" rel="noopener"><b>Read the code on GitHub</b></a>
+      </div>
+
+      <svg class="arch" viewBox="0 0 360 440" role="img" aria-labelledby="arch-t arch-d">
+        <title id="arch-t">Job Application Tracker architecture</title>
+        <desc id="arch-d">A Streamlit dashboard sends requests with a JWT to a Flask API, which reads and writes a SQLite database.</desc>
+
+        <rect class="n" x="1" y="1" width="358" height="70" rx="3"/>
+        <text class="t" x="180" y="31" text-anchor="middle">Streamlit dashboard</text>
+        <text class="s" x="180" y="53" text-anchor="middle">login · signup · manage applications</text>
+
+        <line class="ln" x1="180" y1="71" x2="180" y2="108"/>
+        <polygon class="ah" points="175,106 185,106 180,115"/>
+        <text class="cap" x="194" y="97">HTTP + JWT</text>
+
+        <rect class="n hot" x="1" y="116" width="358" height="170" rx="3"/>
+        <text class="t" x="180" y="142" text-anchor="middle">Flask API</text>
+        <rect class="box" x="16" y="156" width="160" height="36" rx="2"/>
+        <text class="m" x="96" y="179" text-anchor="middle">bcrypt hashing</text>
+        <rect class="box" x="184" y="156" width="160" height="36" rx="2"/>
+        <text class="m" x="264" y="179" text-anchor="middle">JWT sign + verify</text>
+        <rect class="box" x="16" y="200" width="328" height="36" rx="2"/>
+        <text class="m" x="180" y="223" text-anchor="middle">@token_required</text>
+        <rect class="box" x="16" y="244" width="328" height="30" rx="2"/>
+        <text class="m" x="180" y="264" text-anchor="middle">applications CRUD</text>
+
+        <line class="ln" x1="180" y1="286" x2="180" y2="322"/>
+        <polygon class="ah" points="175,320 185,320 180,329"/>
+        <text class="cap" x="194" y="310">SQL</text>
+
+        <rect class="n" x="1" y="330" width="358" height="108" rx="3"/>
+        <text class="t" x="180" y="356" text-anchor="middle">SQLite</text>
+        <rect class="box" x="16" y="368" width="140" height="52" rx="2"/>
+        <text class="m" x="86" y="399" text-anchor="middle">users</text>
+        <rect class="box" x="204" y="368" width="140" height="52" rx="2"/>
+        <text class="m" x="274" y="399" text-anchor="middle">applications</text>
+        <line class="ln" x1="156" y1="394" x2="204" y2="394"/>
+        <text class="cap" x="180" y="386" text-anchor="middle">FK</text>
+      </svg>
+    </article>
+
+    <div class="routes">
+      <p class="label">the api, route by route</p>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>method</th><th>route</th><th>access</th><th>what it does</th></tr></thead>
+          <tbody>
+            <tr><td class="m">POST</td><td class="r">/signup</td><td class="a">open</td><td>Creates an account with a hashed password</td></tr>
+            <tr><td class="m">POST</td><td class="r">/login</td><td class="a">open</td><td>Checks credentials and returns a JWT</td></tr>
+            <tr><td class="m">GET</td><td class="r">/applications</td><td class="a">token needed</td><td>Lists the signed-in user's applications</td></tr>
+            <tr><td class="m">POST</td><td class="r">/applications</td><td class="a">token needed</td><td>Adds an application</td></tr>
+            <tr><td class="m">PUT</td><td class="r">/applications/&lt;id&gt;</td><td class="a">token needed</td><td>Updates an application</td></tr>
+            <tr><td class="m">DELETE</td><td class="r">/applications/&lt;id&gt;</td><td class="a">token needed</td><td>Removes an application</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="index">
+      <p class="label">more projects</p>
+      <div class="row">
+        <h3>Task Manager API</h3>
+        <p>A REST API for creating and managing tasks.</p>
+        <div class="stack">Python, Flask, SQLite</div>
+      </div>
+      <div class="row">
+        <h3>Veg Food Analyser</h3>
+        <p>Analyses vegetarian foods with Pandas and shows the results in a Streamlit app. It includes a custom Value Score for comparing foods.</p>
+        <div class="stack">Python, Pandas, Streamlit</div>
+      </div>
+      <div class="row">
+        <h3>Restaurant Website</h3>
+        <p>A restaurant site I rebuilt as a full-stack app. Flask serves the pages and a SQLite database stores the data.</p>
+        <div class="stack">Flask, SQLite, HTML, CSS, JavaScript</div>
+      </div>
+      <div class="row">
+        <h3>Ambulance Route Optimizer</h3>
+        <p>Finds the shortest route with Dijkstra's algorithm. In a team of five, I led the input and data module.</p>
+        <div class="stack">C++, graph algorithms</div>
+      </div>
+      <div class="row upnext">
+        <h3>Real-time chat app</h3>
+        <p>A WhatsApp-style messenger with live text messages and photo sharing.</p>
+        <div class="stack">Python, WebSockets, SQLite</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap block" id="story">
+    <p class="label">story</p>
+    <h2>How I got here</h2>
+    <div class="story">
+      <p>For my first two semesters I had no laptop, so I learned Python on my phone with Pydroid 3 and Google Colab. I still type examples out by hand instead of pasting them, because it makes me understand every line.</p>
+      <p>After that came a six-week plan covering Pandas, NumPy, Matplotlib, Seaborn and scikit-learn, practised on the Titanic dataset. Then I moved to backends. I learn fastest by building, and a backend gives me something I can run and break.</p>
+      <p>The Job Application Tracker is where it started to come together: passwords, tokens, protected routes and a database, all working in one app. Next I want to build something real time.</p>
+    </div>
+  </section>
+
+  <section class="wrap block" id="skills">
+    <p class="label">skills</p>
+    <h2>What I use</h2>
+    <dl class="skills">
+      <dt>languages</dt><dd>Python, C++, JavaScript, SQL</dd>
+      <dt>backend</dt><dd>Flask, REST API design, JWT authentication, bcrypt, SQLite</dd>
+      <dt>data and ml</dt><dd>Pandas, NumPy, Matplotlib, Seaborn, scikit-learn</dd>
+      <dt>front end</dt><dd>Streamlit, HTML, CSS</dd>
+      <dt>tools</dt><dd>Git, GitHub, VS Code, Google Colab</dd>
+      <dt>learning now</dt><dd>FastAPI, WebSockets, Flask-SocketIO</dd>
+    </dl>
+  </section>
+
+  <section class="wrap contact" id="contact">
+    <p class="label">contact</p>
+    <h2>Hiring interns? Let's talk.</h2>
+    <p>The fastest way to reach me is a message on LinkedIn. My code is on GitHub.</p>
+    <div class="big-links">
+      <a href="https://www.linkedin.com/in/devika-jain-728258402" target="_blank" rel="noopener">linkedin.com/in/devika-jain-728258402</a>
+      <a href="https://github.com/devikajain1906-del" target="_blank" rel="noopener">github.com/devikajain1906-del</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>Devika Jain · BSc AI &amp; ML, CGC Landran</span>
+  <span>Updated November 2026</span>
+</footer>
